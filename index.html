@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hey! ❤️</title>
+<style>
+:root { --wine:#7f2935; --red:#b43e42; --paper:#fffdf7; }
+* { box-sizing:border-box }
+body {
+  margin:0; min-height:100vh; display:grid; place-items:center; padding:18px;
+  background:#f3eee7; color:var(--wine); font-family:Georgia,"Times New Roman",serif;
+}
+.page {
+  position:relative; overflow:hidden; width:min(100%,1000px); min-height:600px;
+  background:var(--paper); display:flex; align-items:center; justify-content:center;
+  padding:50px 28px; box-shadow:0 10px 35px #321d1d20;
+}
+.frame {
+  position:absolute; inset:5%; pointer-events:none; border:3px solid #8c3438;
+  border-radius:8% 5% 7% 4% / 4% 8% 5% 7%; opacity:.9;
+}
+.frame:before,.frame:after {
+  content:""; position:absolute; inset:-5px; border:2px solid #8c3438;
+  border-radius:7% 4% 8% 5% / 5% 7% 4% 8%;
+  clip-path:polygon(0 0,100% 0,100% 100%,0 100%);
+  transform:rotate(.4deg);
+}
+.bow {
+  position:absolute; left:-10px; top:24px; font-size:clamp(60px,10vw,115px);
+  filter:drop-shadow(1px 2px 1px #271b29); z-index:2;
+}
+.bouquet {
+  position:absolute; right:4%; bottom:12%; font-size:clamp(55px,8vw,90px);
+  transform:rotate(-12deg); z-index:2;
+}
+.content {
+  position:relative; z-index:1; width:min(100%,600px); text-align:center;
+  display:flex; flex-direction:column; align-items:center; gap:12px;
+}
+.cat { height:155px; max-width:180px; width:auto; object-fit:contain; }
+h1 { font-size:clamp(27px,4vw,40px); margin:0; font-weight:normal; }
+p { font-size:clamp(17px,2.3vw,23px); line-height:1.5; margin:0; white-space:pre-line; }
+.script { font-family:"Brush Script MT","Segoe Script",cursive; font-size:clamp(35px,5vw,54px); line-height:1.12; }
+.buttons { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:8px; }
+button {
+  min-width:82px; border:0; border-radius:25px; color:#fff9f0; background:var(--red);
+  padding:13px 24px; font-family:Georgia,serif; font-size:16px; cursor:pointer;
+  box-shadow:0 5px 0 #7d3035, 0 7px 9px #0002; transition:transform .15s;
+}
+button:hover { transform:translateY(-2px) }
+button:focus-visible { outline:3px solid #26213c; outline-offset:3px }
+.letter {
+  position:absolute; z-index:5; inset:5%; background:#fffdf7f5; border:2px solid #a64a4d;
+  padding:clamp(18px,4vw,45px); display:none; overflow:auto; text-align:center;
+  color:#4b3032; line-height:1.65; font-size:clamp(14px,1.7vw,18px);
+}
+.letter h2 { font-weight:normal; font-style:italic; }
+.letter p { font-size:inherit; text-align:left; margin:12px 0; }
+.letter button { margin-top:14px }
+@media(max-width:560px) {
+ .page { min-height:650px; padding:35px 20px }
+ .frame { inset:3% }
+ .bow { top:20px; left:-8px }
+ .bouquet { right:1%; bottom:4%; font-size:50px }
+ .cat { height:125px; max-width:145px }
+ .content { padding:40px 4px }
+ .letter { inset:4%; }
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="frame"></div>
+  <div class="bow" aria-hidden="true">🎀</div>
+  <div class="bouquet" aria-hidden="true">💐</div>
+
+  <section class="content" id="content">
+    <img class="cat" id="cat" alt="Gatito">
+    <h1 id="heading">Hey!</h1>
+    <p id="message">Hice algo para ti,<br>¿quieres verlo?</p>
+    <div class="buttons" id="buttons">
+      <button id="yes">Si</button>
+      <button id="no">No</button>
+    </div>
+  </section>
+
+  <section class="letter" id="letter">
+    <h2>My love</h2>
+    <p>Quiero que sepas que lo que siento por ti es sincero. Desde que llegaste a mi vida, has despertado en mí sentimientos que no quiero seguir guardándome. Me gustas mucho, y no solamente por tu forma de ser o por lo bonita que eres, sino también por la manera en que me haces sentir cuando hablo contigo, cuando te veo o simplemente pienso en ti.</p>
+    <p>La verdad, quiero estar contigo. Quiero tener la oportunidad de conocerte más, compartir momentos a tu lado, hacerte sonreír, apoyarte cuando las cosas no vayan bien y demostrarte con hechos que mis sentimientos son reales. No te prometo que todo será perfecto, pero sí que, si me das la oportunidad, voy a poner de mi parte para que podamos construir algo bonito juntos.</p>
+    <p>No quiero que pienses que te digo esto por un momento o por una simple ilusión. Te lo digo porque realmente me interesas y porque me gustaría que algún día podamos mirarnos y saber que tomamos la decisión de intentarlo. No sé qué pueda pasar en el futuro, pero sí sé que hoy quiero estar contigo, quiero elegirte y quiero descubrir si podemos llegar a ser algo más que dos personas que se gustan.</p>
+    <p>No espero que me respondas lo que quiero escuchar, solo quiero que sepas lo que hay en mi corazón. Me gustaría tener la oportunidad de demostrarte cuánto puedes llegar a significar para mí y, sobre todo, de hacerte sentir querida, valorada y especial. Porque si hay algo que tengo claro, es que no quiero quedarme con las ganas de intentarlo contigo.</p>
+    <button id="closeLetter">Volver</button>
+  </section>
+</main>
+<script>
+const cat = document.getElementById('cat');
+const heading = document.getElementById('heading');
+const message = document.getElementById('message');
+const buttons = document.getElementById('buttons');
+const letter = document.getElementById('letter');
+
+const cats = {
+  kitten: 'imagenes/cat-hey.jpeg',
+  grumpy: 'imagenes/cat-angry.jpeg',
+  reaching: 'imagenes/cat-no.jpeg',
+  couple: 'imagenes/cat-couple.jpeg'
+};
+function setCat(key) {
+  cat.src = cats[key];
+}
+function renderStart() {
+  setCat('kitten');
+  heading.textContent = 'Hey!';
+  heading.className = '';
+  message.innerHTML = 'Hice algo para ti,<br>¿quieres verlo?';
+  buttons.innerHTML = '<button id="yes">Si</button><button id="no">No</button>';
+  document.getElementById('yes').onclick = renderProposal;
+  document.getElementById('no').onclick = renderAngry;
+}
+function renderAngry() {
+  setCat('grumpy');
+  heading.textContent = 'COMO TE ATREVES!';
+  heading.className = '';
+  message.textContent = '';
+  buttons.innerHTML = '<button id="back">Volver</button>';
+  document.getElementById('back').onclick = renderStart;
+}
+function renderProposal() {
+  cat.style.display = 'none';
+  heading.textContent = 'seremos novios?';
+  heading.className = 'script';
+  message.textContent = '';
+  buttons.innerHTML = '<button id="yes">Si</button><button id="no">NO!</button>';
+  document.getElementById('yes').onclick = renderLove;
+  document.getElementById('no').onclick = renderNo;
+}
+function renderNo() {
+  cat.style.display = '';
+  setCat('reaching');
+  heading.textContent = 'Acabas de decir que NO?';
+  heading.className = '';
+  message.textContent = '';
+  buttons.innerHTML = '<button id="back">volver</button>';
+  document.getElementById('back').onclick = renderProposal;
+}
+function renderLove() {
+  cat.style.display = '';
+  setCat('couple');
+  heading.textContent = 'Salud por nuestro AMOR! 🥂';
+  heading.className = '';
+  message.textContent = 'Espera!, hay más <3';
+  buttons.innerHTML = '<button id="open">Abrir carta</button>';
+  document.getElementById('open').onclick = () => { letter.style.display = 'block'; };
+}
+document.getElementById('closeLetter').onclick = () => { letter.style.display = 'none'; };
+renderStart();
+</script>
+</body>
+</html>
